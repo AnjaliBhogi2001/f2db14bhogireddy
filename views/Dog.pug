@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  h1= title
+  -
+  - var result = [{"dogName":"Snupy","dogAge":2,"dogBreed":"Husky"},{"dogName":"Sugar","dogAge":3,"dogBreed":"Poodle"},{"dogName":"Buddy","dogAge":4,"dogBreed":"Bulldog"}]
+  div.container-fluid
+     div.row
+        each item,index in result
+            div.col-sm-2(onclick=`buy(${index})`) Dog Name: #{item["dogName"]}  <br>  Dog Age: #{item["dogAge"]} <br> Dog Breed: #{item["dogBreed"]} 
+  script.
+      function buy(index){
+         alert("you purchased item "+(index+1))
+      }
