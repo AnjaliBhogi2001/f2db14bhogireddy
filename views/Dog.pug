@@ -3,7 +3,7 @@ extends layout
 block content
   h1= title
   -
-  - var result = [{"dogName":"Snupy","dogAge":2,"dogBreed":"Husky"},{"dogName":"Sugar","dogAge":3,"dogBreed":"Poodle"},{"dogName":"Buddy","dogAge":4,"dogBreed":"Bulldog"}]
+  - var result = results
   div.container-fluid
      div.row
         each item,index in result
