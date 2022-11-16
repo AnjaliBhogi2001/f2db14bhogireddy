@@ -1,0 +1,42 @@
+extends layout
+block content
+  h1= title
+  if (toShow == null) 
+    h2 No instance to delete 
+  else      
+    - let Dogid = toShow._id
+    - let dogName = toShow.dogName
+    - let dogAge = toShow.dogAge
+    - let dogBreed = toShow.dogBreed
+    div.row(class='mb-2')
+        div.mr-1 ID is
+        div #{Dogid}
+    - let actionid = "/resource/Dog/" + Dogid
+    form(id='DogForm', action= actionid, method="PUT")
+        div.form-group
+            label.DogAttr(for='dogName') Dog Name
+            input#dogName(type='text', name='dogName', value= dogName )
+        div.form-group
+            label.DogAttr(for='dogAge') Dog Age
+            input#dogAge(type='number', name='dogAge', value= dogAge )
+        div.form-group
+            label.DogAttr(for='dogBreed') Dog Breed
+            input#dogBreed(type='text', name='dogBreed', value= dogBreed )
+        input(type="submit")
+    script.
+        document.forms['DogForm'].addEventListener('submit', (event) => {
+        event.preventDefault();
+        // TODO do something here to show user that form is being submitted
+        fetch(event.target.action, {
+        method: 'PUT',
+        body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+        }).then((resp) => {
+        return resp.json(); // or resp.text() or whatever the server sends
+        }).then((body) => {
+        alert("Update succeded")
+        // TODO handle body
+        }).catch((error) => {
+        // TODO handle error
+        alert("Update failed " + error )
+        });
+        });

@@ -18,3 +18,6 @@ router.get('/Dog/:id', Dog_controller.Dog_detail);
 // GET request for list of all Dog items.
 router.get('/Dog', Dog_controller.Dog_list);
 module.exports = router;
+// GET request for one costume. 
+router.get('/Dog/:id', Dog_controller.Dog_detail); 
+ 
