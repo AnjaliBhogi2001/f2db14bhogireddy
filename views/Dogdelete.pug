@@ -1,11 +1,13 @@
 extends layout 
  
-block content 
-  h1= title 
+block content
+  div(class = 'container', style='border: 2px solid #54b435; width:450px;')
+   h1(style="text-align: right; color:#001253 ")= title
+   h1= title 
  
-  if (toShow == null) 
-    h2 No instance to delete 
-  else 
+   if (toShow == null) 
+     h2 No instance to delete 
+   else 
     - let Dogid = toShow._id 
     - let dogName = toShow.dogName 
     - let dogAge = toShow.dogAge 
