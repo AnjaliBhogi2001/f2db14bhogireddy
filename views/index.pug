@@ -1,18 +1,11 @@
 extends layout
-
 block content
-  h1= title
-  p Scientists believe the Earth will be destroyed by celestial phenomena in the next billion years.
-  button(type="button", class="btn btn-info",onclick = "doBump()") Press Me
+ if (!user)
+  a(href="/login") Login
   br
-  div#bump Bump the count 
+  a(href="/register") Register
+ if (user)
+  p You are currently logged in as #{user.username}
+  a(href="/Dog") Take me to Dog
   br
-  a(class="btn btn-dark" href= "Dog") Dog
-  script.
-      var bump=1;
-      var count=0;
-      function doBump(){
-      count=count+bump;
-      bump=bump+1;
-      print=document.getElementById("bump");
-      print.innerHTML='Count '+count+' with bump '+bump;}
+  a(href="/logout") Logout
